@@ -2,7 +2,7 @@
 
 class Sorting
 {
-
+    // Writes Array in console
     static void PrintArray(int[] arr)
     {
         Console.Write("[");
@@ -14,6 +14,7 @@ class Sorting
         }
         Console.Write("]\n");
     }
+
 
     static bool isSorted(int[] arr)
     {
@@ -47,6 +48,48 @@ class Sorting
         }
     }
 
+    static void SelectionSort(int[] arr)
+    {
+        for (int step = 0; step < arr.Length - 1; step++)
+        {
+            int min_index = step; 
+            for (int i = step + 1; i < arr.Length; i++)
+            { // selects index of smallest number
+
+                if (arr[i] < arr[min_index])
+                {
+                    min_index = i;
+                }
+
+            }
+
+            // puts number of smallest index in correct position
+            int temp = arr[step];
+            arr[step] = arr[min_index];
+            arr[min_index] = temp;
+
+        }
+    }
+
+    static void InsertionSort(int[] arr)
+    {
+        for (int i = 1; i < arr.Length; i++)
+        {
+            int key = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && key < arr[j])
+            {
+                arr[j + 1] = arr[j];
+                j -= 1;
+            }
+            arr[j + 1] = key;
+
+        }
+    }
+
+
+
     // Generates a list of length of n and values from [min, max]
     static int[] RandomArray(int n, int min, int max)
     {
@@ -65,7 +108,7 @@ class Sorting
         int[] arr = RandomArray(10, 0, 10);
         
         PrintArray(arr);
-        BubbleSort(arr);
+        InsertionSort(arr);
         PrintArray(arr);
 
 
