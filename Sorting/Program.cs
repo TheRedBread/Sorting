@@ -45,7 +45,7 @@ class Sorting
                     arr[j + 1] = temp;
                 }
             }
-
+            PrintArray(arr);
         }
     }
 
@@ -68,7 +68,7 @@ class Sorting
             int temp = arr[step];
             arr[step] = arr[min_index];
             arr[min_index] = temp;
-
+            PrintArray(arr);
         }
     }
 
@@ -87,7 +87,7 @@ class Sorting
             }
             // put the key at the correct position
             arr[j + 1] = key;
-
+            PrintArray(arr);
         }
     }
 
@@ -152,7 +152,7 @@ class Sorting
 
         merge(arr, left, mid, right);
 
-
+        PrintArray(arr);
     }
 
     static int partition(int[] arr, int low, int high)
@@ -190,6 +190,7 @@ class Sorting
             QuickSort(arr, piv_index + 1, high);
 
         }
+        PrintArray(arr);
     }
 
 
@@ -209,13 +210,45 @@ class Sorting
     static void Main(string[] args)
     {
         int[] arr = RandomArray(10, 0, 10);
-        
+
+        Console.WriteLine("Your Array: ");
         PrintArray(arr);
-        QuickSort(arr, 0, arr.Length - 1);
+        Console.WriteLine("\n=========================================\n");
+
+
+        Console.Write("Select sorting algorithm (bubble, quick, merge, insertion, selection): ");
+        string selection = Console.ReadLine().ToLower();
+
+        Console.WriteLine("\n");
+
+
+        switch (selection)
+        {
+            case "bubble":
+                BubbleSort(arr);
+                break;
+            case "quick":
+                QuickSort(arr, 0, arr.Length - 1);
+                break;
+            case "merge":
+                MergeSort(arr, 0 , arr.Length - 1);
+                break;
+            case "insertion":
+                InsertionSort(arr);
+                break;
+            case "selection":
+                SelectionSort(arr);
+                break;
+        }
+
+
+
+        Console.WriteLine("\n=========================================\n");
+        Console.Write("Final Array: ");
         PrintArray(arr);
 
 
-        Console.WriteLine("is Sorted: " + isSorted(arr));
+        Console.WriteLine("\nis Sorted: " + isSorted(arr));
 
     }
 
